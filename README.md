@@ -58,6 +58,25 @@ Our framework also supports batch-wise classification of multiple graph instance
 ![graph_classification](https://user-images.githubusercontent.com/7347296/34198790-eb5bec96-e56b-11e7-90d5-157800e042de.png)
 
 
+## Run in Docker
+
+The non-GPU base image is [phusion/baseimage](https://github.com/phusion/baseimage-docker).
+To build an image, do:
+```
+docker build -f amd64-1804.dockerfile -t gcn
+```
+
+To run an image, do
+```
+docker run -it gcn /sbin/my_init -- bash -l
+```
+
+Then, within the container, do
+```
+cd gcn
+python3 train.py
+```
+
 ## Cite
 
 Please cite our paper if you use this code in your own work:
