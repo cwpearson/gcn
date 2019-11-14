@@ -60,15 +60,19 @@ Our framework also supports batch-wise classification of multiple graph instance
 
 ## Run in Docker
 
-The non-GPU base image is [phusion/baseimage](https://github.com/phusion/baseimage-docker).
+The non-GPU base image is [phusion/baseimage](https://github.com/phusion/baseimage-docker), which means all commands should be run through /sbin/my_init
+To run a GPU image, you will need the [Nvidia container runtime](https://github.com/NVIDIA/nvidia-container-runtime).
+
 To build an image, do:
 ```
 docker build -f amd64-1804.dockerfile -t gcn
+docker build -f amd64-gpu-1804.dockerfile -t gcn-gpu
 ```
 
 To run an image, do
 ```
 docker run -it gcn /sbin/my_init -- bash -l
+docker run -it --runtime=nvidia gcn-gpu
 ```
 
 Then, within the container, do
